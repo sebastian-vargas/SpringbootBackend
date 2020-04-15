@@ -5,9 +5,8 @@
  */
 package co.edu.utp.isc.gia.backend.controladores;
 
-import co.edu.utp.isc.gia.backend.entidades.Pregunta;
-import co.edu.utp.isc.gia.backend.interfaces.PreguntaService;
-import co.edu.utp.isc.gia.backend.modelos.PreguntaModelo;
+import co.edu.utp.isc.gia.backend.entidades.SolucionExamen;
+import co.edu.utp.isc.gia.backend.interfaces.SolucionExamenService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,20 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author johan
  */
-@CrossOrigin(origins = "http://localhost:4200",maxAge = 3600)//url de angular
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600) // url de angular
 @RestController
-@RequestMapping({"/preguntas"})
-public class PreguntaControlador {
+@RequestMapping({"/solucion_examen"})
+public class SolucionExamenControlador {
     @Autowired
-    PreguntaService preguntaService;
-    
+    SolucionExamenService solucionExamenService;
+
     @GetMapping
-    public List<Pregunta>listar(){
-        return preguntaService.listar();
+    public List<SolucionExamen>listar(){
+        return solucionExamenService.listar();
     }
-    @PostMapping
-    public Pregunta agregar(@RequestBody PreguntaModelo preguntaModelo){
-        return preguntaService.crear(preguntaModelo);
-    }
-    
+  
 }

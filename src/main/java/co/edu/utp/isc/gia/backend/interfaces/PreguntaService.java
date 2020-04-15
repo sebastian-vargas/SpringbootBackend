@@ -7,6 +7,7 @@ package co.edu.utp.isc.gia.backend.interfaces;
 
 
 import co.edu.utp.isc.gia.backend.entidades.Pregunta;
+import co.edu.utp.isc.gia.backend.modelos.PreguntaModelo;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public interface PreguntaService {
     
     List<Pregunta>listar();
     Pregunta listarId(int id);
-    Pregunta crear(Pregunta pregunta);
+    Pregunta crear(PreguntaModelo pregunta);
     Pregunta editar(Pregunta pregunta);
     Pregunta eliminar(int id);
     

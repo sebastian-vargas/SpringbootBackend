@@ -3,46 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.utp.isc.gia.backend.entidades;
+package co.edu.utp.isc.gia.backend.modelos;
 
+import co.edu.utp.isc.gia.backend.entidades.Respuesta;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
  * @author johan
  */
-@Entity
-@Table(name = "preguntas")
-public class Pregunta {
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PreguntaModelo {
     private int id;
-    @Column
     private int fk_examen_id;
-    @Column
     private String descripcion;
-    @Column
     private String imagen;
-    @Column
     private int valoracion;
-    @Column
     private String tipo;
-
-    public Pregunta(int fk_examen_id, String descripcion, String imagen, int valoracion, String tipo) {
-        this.fk_examen_id = fk_examen_id;
-        this.descripcion = descripcion;
-        this.imagen = imagen;
-        this.valoracion = valoracion;
-        this.tipo = tipo;
-        
-    }
+    private List<Respuesta> respuestas;
 
     public int getId() {
         return id;
@@ -91,8 +68,20 @@ public class Pregunta {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
-    
 
+    public List<Respuesta> getRespuestas() {
+        return respuestas;
+    }
+
+    public void setRespuestas(List<Respuesta> respuestas) {
+        this.respuestas = respuestas;
+    }
+
+    
+    
+ 
+
+   
+    
     
 }
