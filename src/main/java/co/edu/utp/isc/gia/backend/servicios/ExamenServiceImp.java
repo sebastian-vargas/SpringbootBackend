@@ -24,7 +24,7 @@ public class ExamenServiceImp implements ExamenService{
 
     @Override
     public Examen listarId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return examenRepositorio.findOne(id);
     }
 
     @Override
@@ -39,7 +39,11 @@ public class ExamenServiceImp implements ExamenService{
 
     @Override
     public Examen eliminar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Examen e = examenRepositorio.findOne(id);
+        if(e != null){
+            examenRepositorio.delete(e);
+        }
+        return e;
     }
     
 }

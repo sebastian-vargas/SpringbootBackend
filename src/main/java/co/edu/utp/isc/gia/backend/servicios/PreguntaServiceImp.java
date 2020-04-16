@@ -12,6 +12,7 @@ import co.edu.utp.isc.gia.backend.interfaces.PreguntaService;
 import co.edu.utp.isc.gia.backend.modelos.PreguntaModelo;
 import co.edu.utp.isc.gia.backend.repositorios.PreguntaRepositorio;
 import co.edu.utp.isc.gia.backend.repositorios.RespuestaRepositorio;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,46 @@ public class PreguntaServiceImp implements PreguntaService {
     @Override
     public List<Pregunta> listar() {
         return preguntaRepositorio.findAll();
+    }
+    @Override
+    public List<PreguntaModelo>listarExamenId(int examen_id){
+        List<PreguntaModelo> preguntasRespuestas = new ArrayList<>();
+        
+        //Recibe todas las preguntas de la BD
+        List<Pregunta> preguntas = preguntaRepositorio.findAll();
+        //Recibe todas las respuestas de lA BD
+        List<Respuesta> respuestas = respuestaRepositorio.findAll();
+        
+        //Recorre la lista de preguntas traidas de la base de datos
+        for(Pregunta p:preguntas){
+            //compara el campo fk_exmaen_id de lña pregunta en el indice actuqal y el id del examen que entra por parametro en el metodo
+            if(p.getFk_examen_id() == examen_id){
+                //declara una lista temporal de respuestas
+                List<Respuesta> respuestas_tmp = new ArrayList<>();
+                //recorre la lista de respuestas traidas de la base de datos
+                for(Respuesta r:respuestas){
+                    //compara el id de la pregunta en el indice del ciclo padre y la propiedad fk_pregunta_id de la respuesta en el indice actual
+                    if(r.getFk_pregunta_id() == p.getId()){
+                        //agrega la respuesta a la lista temporal de respuestas
+                        respuestas_tmp.add(r);
+                    }
+                }
+                //agrgea la pregunta en el indice actual a la lista que va a ser retornada
+                preguntasRespuestas.add(
+                        new PreguntaModelo(
+                                p.getId(),
+                                p.getFk_examen_id(),
+                                p.getDescripcion(),
+                                p.getImagen(),
+                                p.getValoracion(),
+                                p.getTipo(),
+                                respuestas_tmp
+                        )
+                );
+                
+            }
+        }     
+        return preguntasRespuestas;
     }
 
     @Override

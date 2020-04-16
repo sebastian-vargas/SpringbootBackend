@@ -17,6 +17,7 @@ import java.util.List;
 public interface PreguntaService {
     
     List<Pregunta>listar();
+    List<PreguntaModelo>listarExamenId(int examen_id);
     Pregunta listarId(int id);
     Pregunta crear(PreguntaModelo pregunta);
     Pregunta editar(Pregunta pregunta);

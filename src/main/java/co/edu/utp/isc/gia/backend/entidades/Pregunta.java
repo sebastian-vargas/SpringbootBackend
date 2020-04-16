@@ -43,6 +43,7 @@ public class Pregunta {
         this.tipo = tipo;
         
     }
+    public Pregunta(){}
 
     public int getId() {
         return id;

@@ -12,6 +12,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,11 @@ public class PreguntaControlador {
     @GetMapping
     public List<Pregunta>listar(){
         return preguntaService.listar();
+    }
+    
+    @GetMapping(path = "/{examen_id}")
+    public List<PreguntaModelo>listarExamenId(@PathVariable("examen_id") int examen_id){
+        return preguntaService.listarExamenId(examen_id);
     }
     @PostMapping
     public Pregunta agregar(@RequestBody PreguntaModelo preguntaModelo){

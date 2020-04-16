@@ -20,7 +20,20 @@ public class PreguntaModelo {
     private int valoracion;
     private String tipo;
     private List<Respuesta> respuestas;
+    
+    public PreguntaModelo(){}
 
+    public PreguntaModelo(int id, int fk_examen_id, String descripcion, String imagen, int valoracion, String tipo, List<Respuesta> respuestas) {
+        this.id = id;
+        this.fk_examen_id = fk_examen_id;
+        this.descripcion = descripcion;
+        this.imagen = imagen;
+        this.valoracion = valoracion;
+        this.tipo = tipo;
+        this.respuestas = respuestas;
+    }
+    
+    
     public int getId() {
         return id;
     }
@@ -76,12 +89,5 @@ public class PreguntaModelo {
     public void setRespuestas(List<Respuesta> respuestas) {
         this.respuestas = respuestas;
     }
-
-    
-    
- 
-
-   
-    
-    
+  
 }
