@@ -109,8 +109,8 @@ public class PreguntaServiceImp implements PreguntaService {
                         for(int i = 0; i < preguntaModelo.getRespuestas().size(); i++){
                             r = preguntaModelo.getRespuestas().get(i);
                             r.setFk_pregunta_id(p.getId());
-    
-                            respuestaRepositorio.save(r); 
+                            System.out.println(r.getRespuesta());
+                            respuestaRepositorio.save(r);                          
                         }
                     } 
     
