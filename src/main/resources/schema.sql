@@ -45,10 +45,20 @@ CREATE TABLE profesores (
  
 CREATE TABLE respuestas (
   id integer(11) NOT NULL,
-  fk_preguntas_id integer(11) NOT NULL,
+  fk_pregunta_id integer(11) NOT NULL,
   respuesta tinyint(1) NOT NULL,
   correcta tinyint(1) NOT NULL
 );
+
+CREATE TABLE solucion_examen(
+    id integer(11) NOT NULL,
+    fk_estudiante_id integer(11) NOT NULL,
+    fk_pregunta_id integer(11) NOT NULL,
+    fk_examen_id integer(11) NOT NULL,
+    valoracion_obtenida integer(11) NOT NULL,
+    respuesta_abierta text NOT NULL,
+    revisada tinyint(1) NOT NULL
+); 
  
  
 ALTER TABLE estudiantes
@@ -65,6 +75,9 @@ ALTER TABLE preguntas
  
 ALTER TABLE profesores
   ADD PRIMARY KEY (id);
+
+ALTER TABLE solucion_examen
+  ADD PRIMARY KEY (id);
  
 ALTER TABLE estudiantes
   MODIFY id integer(11) NOT NULL AUTO_INCREMENT;
@@ -80,6 +93,9 @@ ALTER TABLE preguntas
   MODIFY id integer(11) NOT NULL AUTO_INCREMENT;
  
 ALTER TABLE profesores
+  MODIFY id integer(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE solucion_examen
   MODIFY id integer(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
