@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 
 /**
- *
+ ***
  * @author johan
  */
 @CrossOrigin(origins = "http://localhost:4200",maxAge = 3600)//url de angular
@@ -35,5 +35,6 @@ public class MateriaControlador {
     @PostMapping
     public Materia agregar(@RequestBody Materia materia){
         return materiaService.crear(materia);
+        
     }
 }
