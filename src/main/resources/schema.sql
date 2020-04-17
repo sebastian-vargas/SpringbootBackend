@@ -57,6 +57,7 @@ CREATE TABLE solucion_examen(
     fk_examen_id integer(11) NOT NULL,
     valoracion_obtenida integer(11) NOT NULL,
     respuesta_abierta text NOT NULL,
+    tipo_pregunta varchar(255) NOT NULL,
     revisada tinyint(1) NOT NULL
 ); 
  
