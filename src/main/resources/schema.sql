@@ -46,7 +46,7 @@ CREATE TABLE profesores (
 CREATE TABLE respuestas (
   id integer(11) NOT NULL,
   fk_pregunta_id integer(11) NOT NULL,
-  respuesta tinyint(1) NOT NULL,
+  respuesta varchar(255) NOT NULL,
   correcta tinyint(1) NOT NULL
 );
 
@@ -79,13 +79,20 @@ ALTER TABLE profesores
 
 ALTER TABLE solucion_examen
   ADD PRIMARY KEY (id);
+
+ALTER TABLE respuestas
+  ADD PRIMARY KEY (id);
  
+
+
 ALTER TABLE estudiantes
   MODIFY id integer(11) NOT NULL AUTO_INCREMENT;
  
 ALTER TABLE examenes
   MODIFY id integer(11) NOT NULL AUTO_INCREMENT;
- 
+
+ALTER TABLE respuestas
+  MODIFY id integer(11) NOT NULL AUTO_INCREMENT;
  
 ALTER TABLE materias
   MODIFY id integer(11) NOT NULL AUTO_INCREMENT;
