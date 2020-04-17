@@ -20,7 +20,8 @@ public interface PreguntaService {
     List<PreguntaModelo>listarExamenId(int examen_id);
     Pregunta listarId(int id);
     Pregunta crear(PreguntaModelo pregunta);
+    Pregunta crearPreguntas(List<PreguntaModelo> pregunta);
     Pregunta editar(Pregunta pregunta);
     Pregunta eliminar(int id);
-    
+
 }

@@ -22,25 +22,27 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author johan
  */
-@CrossOrigin(origins = "http://localhost:4200",maxAge = 3600)//url de angular
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600) // url de angular
 @RestController
 @RequestMapping({"/preguntas"})
 public class PreguntaControlador {
+
     @Autowired
     PreguntaService preguntaService;
-    
+
     @GetMapping
     public List<Pregunta>listar(){
         return preguntaService.listar();
     }
-    
+
     @GetMapping(path = "/{examen_id}")
     public List<PreguntaModelo>listarExamenId(@PathVariable("examen_id") int examen_id){
         return preguntaService.listarExamenId(examen_id);
     }
+
     @PostMapping
-    public Pregunta agregar(@RequestBody PreguntaModelo preguntaModelo){
-        return preguntaService.crear(preguntaModelo);
+    public Pregunta agregar(@RequestBody List<PreguntaModelo> preguntaModelo){
+        return preguntaService.crearPreguntas(preguntaModelo);
     }
     
 }
